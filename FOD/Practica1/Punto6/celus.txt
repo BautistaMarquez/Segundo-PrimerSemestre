@@ -1,0 +1,3 @@
+codigo: 221 precio:23000 marca:  motorola stockMinimo: 300 stockDisponible: 200 nombre:  motoOnedescripcion: un celular regular|
+codigo: 220 precio:25000 marca:  samsung stockMinimo: 200 stockDisponible: 300 nombre:  J7 descripcion: una celular masomenos|
+codigo: 210 precio:20000 marca:  iphone stockMinimo: 450 stockDisponible: 500 nombre:  MACdescripcion: une celular bueno|

@@ -1,0 +1,10 @@
+1 juan 72
+2 lucas 22
+3 maria 11
+4 marcos 12
+5 luis 20
+6 walter 02
+7 agustin 11
+8 marta 11
+9 matias 12
+10 juana 22

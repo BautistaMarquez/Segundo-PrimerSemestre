@@ -1,0 +1,1 @@
+codigo: 221 precio:23000 marca:  motorola stockMinimo: 300 stockDisponible: 0 descripcion: un celular regular|

@@ -1,0 +1,79 @@
+{
+2. Una mejora respecto a la solución propuesta en el ejercicio 1 sería mantener por un
+lado el archivo que contiene la información de los alumnos de la Facultad de
+Informática (archivo de datos no ordenado) y por otro lado mantener un índice al
+archivo de datos que se estructura como un árbol B que ofrece acceso indizado por
+DNI de los alumnos.
+a. Defina en Pascal las estructuras de datos correspondientes para el archivo de
+alumnos y su índice.
+b. Suponga que cada nodo del árbol B cuenta con un tamaño de 512 bytes. ¿Cuál
+sería el orden del árbol B (valor de M) que se emplea como índice? Asuma que
+los números enteros ocupan 4 bytes. Para este inciso puede emplear una fórmula
+similar al punto 1b, pero considere además que en cada nodo se deben
+almacenar los M-1 enlaces a los registros correspondientes en el archivo de
+datos.
+c. ¿Qué implica que el orden del árbol B sea mayor que en el caso del ejercicio 1?
+d. Describa con sus palabras el proceso para buscar el alumno con el DNI 12345678
+usando el índice definido en este punto.
+e. ¿Qué ocurre si desea buscar un alumno por su número de legajo? ¿Tiene sentido
+usar el índice que organiza el acceso al archivo de alumnos por DNI? ¿Cómo
+haría para brindar acceso indizado al archivo de alumnos por número de legajo?
+f. Suponga que desea buscar los alumnas que tienen DNI en el rango entre
+40000000 y 45000000. ¿Qué problemas tiene este tipo de búsquedas con apoyo
+de un árbol B que solo provee acceso indizado por DNI al archivo de alumnos?
+}
+
+a- 
+program Punto2;
+
+type
+const m;
+alumno = record
+	nombre:string;
+	apellido:string;
+	dni:integer;
+	legajo:integer;
+	ingreso:integer;
+end;
+
+archivo = file of alumno;
+
+nodoA = record 
+	cantClaves:integer;
+	claves:array[1,m-1]of integer;
+    enlaces:array[1,m-1]of integer;
+	hijos:array[1,m]of integer;
+end;
+
+archivoIndice = file of nodoA;
+
+var 
+archi:archivo;
+archiIndi:archivoIndice;
+
+b- 
+
+N = (M-1) * A + M * B + C + X.
+N = 512
+M = ?
+X = 4
+A = 4
+B = 4
+C = 4
+
+512 = (M-1) * 4 + M * 4 + 4.
+512 = 4M-4 + 8M
+516 = 12M
+43 = M 
+
+c- 
+que vamos a poder guardar mas "registros en un nodo" en realidad no estamos guardando los registros ya que guardamos las referencias al otro archivo, pero esa seria la idea. 
+
+d- 
+buscariamos en el arbol b por DNI preguntando si es mayor o menor a cada dni de los nodos y cuando lo encontremos usamos el enlace que tenemos guardado para ubicarlo en el archivo NO ordenado.
+
+e- 
+obviamente no tiene sentido, habria que buscarlo por indexar el arbol para buscarlo por numero de legajo sino no nos serviria de nada tenerlo ordenado por dni. 
+
+f- 
+supongo que seria la cantidad de accesos a memoria ya que tendiramos que acceder muchas veces a ambos archvios y no seria tan util el archivo ordenado por DNI ya que estamos buscando una gran cantidad de registros y por cada registro encontramos accederiamos al achivo NO ordenado y asi sucesivamente hasta finalizar.

@@ -1,0 +1,6 @@
+100 6000 accion
+Terminator
+101 4500 ficcion
+Aquaman
+102 3200 romance
+ElAmor

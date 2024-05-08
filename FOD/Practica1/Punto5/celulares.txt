@@ -1,0 +1,9 @@
+221 23000 motorola
+200 300 motoOne
+un celular regular
+220 25000 samsung
+300 200 J7 
+una celular masomenos
+210 20000 iphone
+500 450 MAC
+une celular bueno
