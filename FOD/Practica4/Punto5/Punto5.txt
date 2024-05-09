@@ -1,0 +1,13 @@
+{
+5. Defina los siguientes conceptos:
+● Overflow
+● Underflow
+● Redistribución
+● Fusión o concatenación
+En los dos últimos casos, ¿cuándo se aplica cada uno?
+}
+
+- Overflow: se da cuando se excede la cantidad de claves o registros posibles en un nodo. 
+- Underflow: se da cuando el nodo tiene menos de la cantidad de claves minimas posibles(normalmente [n/2 - 1]).
+- Redistribución: se da cuando hay Underflow o Overflow y se reacomoda el nodo con un hermano adyacente y el padre de estos. 
+- Fusión: se da cuando hay Underflow o Overflow y no se puede realizar la Redistribución debido a que el nodo no cuenta con hermanos adyacentes o estos no pueden redistribuir ya que tambien quedarian con Underflow/Overflow se fusionan/concatenan ambos nodos esto puede llegar a generar cambios con los enlaces de los nodos padres o generar distribucion/fusion entre estos ultimos. 

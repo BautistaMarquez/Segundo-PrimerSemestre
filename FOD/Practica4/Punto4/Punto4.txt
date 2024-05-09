@@ -1,0 +1,35 @@
+{
+4. Dado el siguiente algoritmo de búsqueda en un árbol B:
+procedure buscar(NRR, clave, NRR_encontrado, pos_encontrada, resultado)
+var clave_encontrada: boolean;
+begin
+if (nodo = null)
+resultado := false; {clave no encontrada}
+else
+posicionarYLeerNodo(A, nodo, NRR);
+claveEncontrada(A, nodo, clave, pos, clave_encontrada);
+if (clave_encontrada) then begin
+NRR_encontrado := NRR; { NRR actual }
+pos_encontrada := pos; { posicion dentro del array }
+resultado := true;
+end
+else
+buscar(nodo.hijos[pos], clave, NRR_encontrado, pos_encontrada,
+resultado)
+end;
+Asuma que para la primera llamada, el parámetro NRR contiene la posición de la raíz
+del árbol. Responda detalladamente:
+a. PosicionarYLeerNodo(): Indique qué hace y la forma en que deben ser
+enviados los parámetros (valor o referencia). Implemente este módulo en Pascal.
+b. claveEncontrada(): Indique qué hace y la forma en que deben ser enviados los
+parámetros (valor o referencia). ¿Cómo lo implementaría?
+c. ¿Existe algún error en este código? En caso afirmativo, modifique lo que
+considere necesario.
+d. ¿Qué cambios son necesarios en el procedimiento de búsqueda implementado
+sobre un árbol B para que funcione en un árbol B+?
+}
+
+a. A = referencia, nodo = referencia, NRR = valor. Se posiciona en el NRR pasado por valor y lee y devuelve el nodo de esa posicion.
+b. B = A = referencia, nodo = valor, clave = referencia, pos = referencia, clave_encontrada = referencia.
+c. El error estaria en pasar el A en el procedure clave encontrada ya que no haria falta si este solo debe buscar dentro del nodo pasado por valor si la clave que se busca se encontro o no. 
+d. no habria que empezar por la raiz, sino que por el nodo hoja mas izquierdo y en vez de hacer la recursion con el hijo, hacerla con el "puntero" que apunta al hermano derecho. 

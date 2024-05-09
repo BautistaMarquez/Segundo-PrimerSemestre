@@ -1,0 +1,32 @@
+{
+7. Dado el siguiente árbol B de orden 5, mostrar cómo quedaría el mismo luego de realizar
+las siguientes operaciones: +320, -390, -400, -533. Justificar detalladamente cada
+operación indicando lecturas y escrituras en orden de ocurrencia. Para la resolución de
+underflow debe utilizar política a izquierda. Graficar cada operación por separado.
+2: 0 (220) 1 (390) 4 (455) 5 (541) 3
+0: (10)(150) 1: (225)(241)(331)(360) 4: (400)(407) 5: (508)(533) 3: (690)(823)
+}
+
+                2: 0 (220)      1 (390)       4 (455)    5 (541) 3
+0: (10)(150) 1: (225)(241)(331)(360) 4: (400)(407) 5: (508)(533) 3: (690)(823)
+
+1.             2: 0 (220)      1 (331)       4 (455)    5 (541) 3
+    0: (10)(150)   1: (225)(241)(320)  4:(360)(390)(400)(407) 5: (508)(533) 3: (690)(823)
+    -Leo la raiz (nodo 2), Leo el nodo 1, como la cantClaves es = 2 puedo escribir el 320 tranquilamente, escribo en el nodo 1 la clave 320.
+    -2 lecturas(nodos 2 y 1) y 1 escritura(nodo 1).
+
+2.             2: 0 (220)      1 (331)       4 (455)    5 (541) 3
+    0: (10)(150)   1: (225)(241)(320)  4:(360)(400)(407) 5: (508)(533) 3: (690)(823)
+    -Leo la raiz (nodo 2),leo el nodo 4, como veo que la cantClaves es = 4 puedo eliminar tranquilamente, escribo en el nodo 4(eliminando la clave 390), no estoy seguro si cuenta como dos escrituras ya que tengo que correr al 400 y 407 una pos.
+    -2 lecturas (nodos 2 y 4) y 1 escritura(nodo 4).
+
+3.             2: 0 (220)      1 (331)       4 (455)    5 (541) 3
+    0: (10)(150)   1: (225)(241)(320)  4:(360)(407) 5: (508)(533) 3: (690)(823)
+    -Leo la raiz (nodo 2),leo el nodo 4, como veo que la cantClaves es = 3 puedo eliminar tranquilamente, escribo en el nodo 4(eliminando la clave 400), no estoy seguro si cuenta como dos escrituras ya que tengo que correr al 407 una pos.
+    -2 lecturas (nodos 2 y 4) y 1 escritura(nodo 4).
+
+
+4.           2: 0 (220)      1 (331)       4 (508)  (541) 3
+ 0: (10)(150)   1: (225)(241)(320) 4:(360)(407)(455) 3: (690)(823)
+ -Leo la raiz(nodo 2), leo el nodo 5 como veo que la cantClaves es = 2 y si elimino generaria underflow debo redistribuir como se utiliza politica de izquierda tengo que leer el nodo hermano adyacente izquierda, para esto leo el nodo raiz devuelta(nodo 2), leo el nodo 4 como veo que la cantClaves tambien es = 2 no puedo redistribuir y tengo que concatenar entonces escribo nodo 5,4 y 2(tengo que preguntar y charlar como son las lecturas en estos casos ya que no me queda muy claro cuando se sabe que nose puede redistribuir y si concatenar entonces nose como son y cuantas son la cantidad de lecturas).
+ -cantidad de lecturas ¿5? y cantidad de escrituras 3
