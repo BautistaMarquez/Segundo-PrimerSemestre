@@ -1,0 +1,10 @@
+Ejercicio 4
+Determinar si las siguientes sentencias son verdaderas o falsas, justificando la respuesta
+utilizando notación Big-Oh.
+
+a. Verdadero, ya que se podria definir como esta regla T(n) = cte * f(n) => T(n) = O( f(n) )
+b. creo que seria falso por la regla, T(n) = cte => O(1)
+c. creo que seria falso por la regla, T(n) = cte => O(1)
+d. no, es falso ya que cuando es mayor a 99 se vuelve constante.
+e. 
+f. verdadero, por regla. 

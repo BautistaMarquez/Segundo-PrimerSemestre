@@ -1,0 +1,51 @@
+	Ejercicio 1
+	Debido a un error en la actualización de sus sistemas, el banco AyED perdió la información del
+	estado de todas sus cuentas. Afortunadamente logran recuperar un backup del día anterior y
+	utilizando las transacciones registradas en las últimas 24hrs podrán reconstruir los saldos. Hay
+	poco tiempo que perder, el sistema bancario debe volver a operar lo antes posible.
+	Las transacciones se encuentran agrupadas en consultas, una consulta cuenta con un valor y un
+	rango de cuentas consecutivas a las que hay que aplicar este cambio, por ejemplo la consulta
+	(333..688 = 120) implica sumar $120 a todas las cuentas entre la número 333 y la número 688
+	(inclusive). Entonces, la recuperación de los datos consiste en aplicar todas las consultas sobre el
+	estado de las cuentas recuperadas en el backup del día anterior.
+	El equipo de desarrollo se pone manos a la obra y llega a una solución rápidamente (Algoritmo
+	procesarMovimientos). Toman cada consulta y recorren el rango de cuentas aplicando el valor
+	correspondiente, como muestra el siguiente algoritmo.
+	Consultas.comenzar()
+	While(!consultas.fin())
+	Consulta = consultas.proximo();
+	for(i = consulta.desde; i < consulta.hasta; i++)
+	cuenta[i] = cuenta[i] + consulta.valor;
+	
+	
+	Escriben la solución en pocos minutos y ponen en marcha el proceso de recuperación. Enseguida se
+	dan cuenta que el proceso va a tardar muchas horas en finalizar, son muchas cuentas y muchos
+	movimientos, la solución aunque simple es ineficiente. Luego de discutir varias ideas llegan a una
+	solución (Algoritmo procesarMovimientosOptimizado) que logra procesar toda la información en
+	pocos segundos. Ambos algoritmos se encuentran en el archivo Ejercicio 1 - rsq_tn_ayed.zip del
+	material adicional.
+	a.- Para que usted pueda experimentar el tiempo que demora cada uno de los dos algoritmos en
+	forma empírica, usted debe ejecutar cada uno de ellos, con distintas cantidades de elementos y
+	completar la tabla. Luego haga la gráfica para comparar los tiempos de ambos algoritmos. Tenga
+	en cuenta que el algoritmo posee dos constantes CANTIDAD_CUENTAS y CANTIDAD_CONSULTAS,
+	sin embargo, por simplicidad, ambas toman el mismo valor. Sólo necesita modificar
+	CANTIDAD_CUENTAS .
+	N° de cuentas(y consultas)			procesarMovimientos			procesarMovimientosOptimizado
+				1.000							0.031							0.001
+				10.000							0.717							0.008						
+				25.000							4.545							0.017							
+				50.000							18.185							0.03								
+				100.000							69.462							0.039							
+												
+	b.- ¿Por qué procesarMovimientos es tan ineficiente? Tenga en cuenta que pueden existir
+			millones de movimientos diarios que abarquen gran parte de las cuentas bancarias.
+			c.- ¿En qué se diferencia procesarMovimientosOptimizado? Observe las operaciones que se
+			realizan para cada consulta.
+			Aunque los dos algoritmos se encuentran explicados en los comentarios, no es necesario entender
+			su funcionamiento para contestar las preguntas.
+
+			
+	b. El procesarMovimientos es tan ineficiente por hacer un for dentro de otro for y por cada consulta recorrer todo el arreglo, lo cual lo hace muy ineficiente y cada vez se va notando mas cuando la cantidad de cuentas y consultas va en aumento.
+	esto seria (N * cte) * (N * cte) //seria distinto igual pero mas o menos entiendo la idea, seria como hacer 100 * 100.
+	c. se diferencia en solo realizar dos for y no recorrer todas las pos "del arreglo" de la consulta, ya que con el formato que uso de sumar y restar en las pos de inicio y fin lo hace mucho mas eficiente y se ahorra de tener que recorrer toda la consulta para asignar valor por valor. 
+	y esto seria (N * cte) + (N * cte) //seria distinto igual pero mas o menos entiendo la idea, seria como hacer 100 + 100.
