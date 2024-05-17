@@ -13,3 +13,31 @@ nodo 3: 2 h(51)(60)->4
 nodo 4: 2 h(69)(80)->5
 nodo 5: 1 h(104)->-1
 }
+0.                     2: 0(30) 1 (51)3   7:  2 (69) 6   6:  4 (94) 5
+    0: (5) (10) (20) 1    1: (30) (40) 3   3: (51) (60) 4   4: (69) (80) 5   5: (94) (104) -1
+//Para empezar entiendo que falta el 94 en el nodo 5 porque encima despues piden la eliminacion de este, asique lo voy a agregar.
+
+1.                     2: 0(10) 6 (30) 1 (51)3  7:  2 (69) 6  6:  4 (94) 5
+    0: (4) (5) 6  6: (10) (20) 1  1: (30) (40) 3  3: (51) (60) 4   4: (69) (80) 5  5: (94) (104) -1
++4
+//agrego el 4 al nodo 0, como este genera underflow divido el nodo 0, genero el nodo 6 y asciendo una copia de la menor clave del nuevo nodo creado (clave 10) al nodo 2 y modifico los enlaces de este.
+L2,L0,E0,E6,E2.
+
+2.                     2: 0(10) 6 (30) 1 (51)3  7:  2 (69) 6  6:  4 (94) 5
+    0: (4) (5) 6  6: (10) (20) 1  1: (30) (40) (44) 3  3: (51) (60) 4   4: (69) (80) 5  5: (94) (104) -1
++44
+//agrego al nodo 1 la clave 44, como no produce overflow ahi termina la operacion.
+L2,L1,E1.
+
+3.                     2: 0(10) 6 (30) 1 (51)3  7:  2 (69) 6  6:  4 (94) 5
+    0: (4) (5) 6  6: (10) (20) 1  1: (30) (40) (44) 3  3: (51) (60) 4   4: (69) (80) 5  5: (104) -1
+-94
+//Elimino la clave 94 del nodo 5, como no genera underflow ya que los nodos hojas pueden tener (M/2)-1 = 1 claves, ahi termina la operacion, no hay ninguna necesidad de eliminar la clave copia del 94 que se encuentra en la raiz.
+L6,L5,E5.
+
+4.                     2: 0(10) 6 (30) 1 (51)3  7:  2 (69) 6  6:  4 (80) 5
+    0: (4) (5) 6  6: (10) (20) 1  1: (30) (40) (44) 3  3: (51) (60) 4   4: (69) 5  5: (80) -1
+-104
+//Elimino la clave 104 del nodo 5, como es la ultima clave que posee este nodo esto genero underflow, por lo cual debemos solucionarlo para ello vemos que en el hermano adyacente izquierdo hay 2 claves osea que podemos redistribuir sin necesidad de fusionar asique tomamos la clave 80 y la redistribuimos cargando en el nodo 5, antes de esto se debe modificar la clave copia del nodo 6 con una copia de la clave 80. 
+L6,L5,L4,E6,E5.
+//TENGO QUE CONSULTAR SI EN ESTOS CASOS LA ELIMINACION SE GENERA ANTES O DESPUES DE "TRANSLADAR" LA CLAVE 80, CREO QUE DESPUES.

@@ -91,7 +91,7 @@ Política de resolución de underflows: derecha o izquierda.
                     2: 0 (28) 3                 6: 4 (57) 8 
     0: (10) (16) (23) 3  3: (28) (36) 4  4: (46) (56) 8  8: (130) -1
 -57
-//como puedo seguir distribuyendo con el 2, lo hago. De primera lo que pense fue fusionar ya que solo me quedan 3 claves copias, pero se supone que eso estari mal porque si puedo evitar la fusion, la evito.
+//como puedo seguir distribuyendo con el 2, lo hago. De primera lo que pense fue fusionar ya que solo me quedan 3 claves copias, pero se supone que eso estaria mal porque si puedo evitar la fusion, la evito.
 
 21.                               7: 2 (46) 6
                     2: 0 (28) 3                 6: 4 (57) 8 
