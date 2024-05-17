@@ -1,0 +1,16 @@
+{
+23. Dado un árbol B de orden 5 y con política izquierda o derecha, para cada operación
+dada:
+a. Dibuje el árbol resultante
+b. Explique detalladamente las decisiones tomadas
+c. Escriba las lecturas y escrituras
+Operaciones: +165, +260, +800, -110,
+Árbol: Nodo 8: 1 i 2 (150) 7
+Nodo 2: 1 i 0 (120) 3
+Nodo 7: 2 i 4 (210)6(300)1
+Nodo 0: 2 h (30)(110)
+Nodo 3: 1 h (130)
+Nodo 4: 4 h (160)(170)(180)(200)
+Nodo 6: 4 h (220)(230)(240)(250)
+Nodo 1: 4 h (400)(500)(600)(700)
+}

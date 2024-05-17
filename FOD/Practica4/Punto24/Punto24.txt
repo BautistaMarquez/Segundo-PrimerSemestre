@@ -1,0 +1,18 @@
+{
+24. Dado un árbol B+ de orden 5 y con política izquierda o derecha, para cada operación
+dada:
+a. Dibuje el árbol resultante
+b. Explique detalladamente las decisiones tomadas
+c. Escriba las lecturas y escrituras
+Operaciones: +250, -300, -40
+Árbol: nodo 8: 1 i 2(70)7
+nodo2:1 i 0(50)4
+nodo7: 4 i 5(90)6(120)3(210)9(300)1
+nodo 0: 1 h(40)->4
+nodo 4: 1 h(50)->5
+nodo 5: 2 h(70)(80)->6
+nodo 6: 2 h(90)(100)->3
+nodo 3: 2 h(120)(200)->9
+nodo 9: 4 h(210)(220)(230)(240)->1
+nodo 1: 2 h(400)(500)-> -1
+}

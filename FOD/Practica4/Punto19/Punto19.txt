@@ -1,0 +1,7 @@
+{
+19. Dada las siguientes operaciones, mostrar la construcción paso a paso de un árbol B+ de
+orden 6:
++52, +23, +10, +99, +63, +74, +19, +85, +14, +73, +5, +7, +41, +100, +130, +44, -63, -73, +15,
++16, -74, -52.
+Política de resolución de underflows: izquierda.
+}

@@ -1,0 +1,6 @@
+{
+20. Dado el siguiente árbol B+ de orden 4, mostrar cómo quedaría definido el árbol luego
+de realizar las siguientes operaciones: -56, -23, -1.
+2: 0 (56) 1
+0: (1)(23) 1 1: (56) (75) (107)
+}
