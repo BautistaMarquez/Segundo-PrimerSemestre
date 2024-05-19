@@ -16,3 +16,23 @@ nodo 3: 2 h(120)(200)->9
 nodo 9: 4 h(210)(220)(230)(240)->1
 nodo 1: 2 h(400)(500)-> -1
 }
+0.                                           8: 2 (70) 7
+                    2: 0 (50) 4                                        7: 5 (90) 6 (120) 3 (210) 9 (300) 1   
+    0: (40) 4  4: (50) 5  5: (70) (80) 6  6: (90) (100) 3  3: (120) (200) 9   9: (210) (220) (230) (240) 1  1: (400) (500) -1 
+
+1.                                                8: 2 (70) 7 (210) 11
+                    2: 0 (50) 4                   7: 5 (90) 6 (120) 3                   11: 9 (230) 10 (300) 1   
+    0: (40) 4  4: (50) 5  5: (70) (80) 6  6: (90) (100) 3  3: (120) (200) 9   9: (210) (220) 10  10: (230) (240) (250) 1  1: (400) (500) -1 
++250
+//la carga de la clave 250 en el nodo 9 genera overflow por lo tanto divido el nodo y subo una copia de la clave 230, esta genera overflow en el nodo 7 por lo tanto creo el nodo 11 y promuevo la clave 210 a la raiz.
+
+2.                                                8: 2 (70) 7 (210) 11
+                    2: 0 (50) 4                   7: 5 (90) 6 (120) 3                   11: 9 (230) 10 (300) 1   
+    0: (40) 4  4: (50) 5  5: (70) (80) 6  6: (90) (100) 3  3: (120) (200) 9   9: (210) (220) 10  10: (230) (240) (250) 1  1: (400) (500) -1
+-300 ???
+
+3.                                                8: 2 (70) 7 (210) 11
+                    2: 0 (50) 4                   7: 5 (90) 6 (120) 3                   11: 9 (230) 10 (300) 1   
+    0: (50) 4  4: () 5  5: (70) (80) 6  6: (90) (100) 3  3: (120) (200) 9   9: (210) (220) 10  10: (230) (240) (250) 1  1: (400) (500) -1
+-40
+//como la eliminacion de la clave 40 me generaria underflow concateno con el nodo 4, al realizar esto se me genera underflow en el nodo 2 y tengo que concatenar (deberia bajar la clave 70 "pisando" la 50 pero nose como explicarlo).
