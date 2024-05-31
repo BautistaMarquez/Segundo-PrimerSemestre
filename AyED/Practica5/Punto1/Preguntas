@@ -1,0 +1,5 @@
+B- Entiendo que los que nos pasaron a nosotros estan realizados mediante lista de adyacencias, entonces solo tendriamos que cambiar la lista por una matriz en la cual la pos seas el vertice origen y destino. Me parece una paja tener que hacer todo eso ya que no cambiaria mucho, ademas no estoy seguro si piden hacer todos los metodos lo cual me parece demasiado.
+D- Si, se podria ya que en el metodo getWeight podriamos retornar que es un grafo no ponderado. Entonces no deberia haber problema.
+E- No se que cambiaria, ya que seria algo mas del recorrido.
+Entiendo que lo que nos pasaron ya podriamos hacer las practicas y estos puntos son mas para joder que otra cosa asique no les voy a dar mucha bola, cualquier cosa despues me fijo si es que piden que utilicemos algo de esto.
+Soy un pelotudo. Ya nos pasaron hechos los grafos por matrices y por listas, no se si en el punto b y c se esperan que nosotros hagamos todo eso solamente para despues compararlo, si es asi yo paso es una banda y literal no serviria de mucho entiendo.
