@@ -61,7 +61,7 @@ public class mapaCiudades {
 			for (Edge<String> e: adyacentes){ //itero las adyacencias
 			 int j = e.getTarget().getPosition();
 			 if (!marca[j]) { //si no lo visite 
-				 if(r.get(r.size()-1) != ciudad2) { //es la manera que se me ocurrio para cortar la recursion.
+				 if(r.get(r.size()-1) != ciudad2) { //es la manera que se me ocurrio para cortar la recursion. Ya que podria pasar que yo ya alla agregado ciudad2 pero como el vertice anterior tenia mas adyacencias haga devuelta el dfs y me carge mas ciudades.
 				 dfs(j, grafo, marca,r,ciudad2); //hago el dfs "interno"
 				 }
 			 }
@@ -79,7 +79,7 @@ public class mapaCiudades {
 		for(i = 0; i<ciudades.size();i++) {
 			if(ciudades.get(i).getData() == ciudad1 || ciudades.get(i).getData() == ciudad2) { //compruebo que esten las dos ciudades
 				comprobacion = comprobacion + 1;
-				if(ciudades.get(i).getData() == ciudad1) {
+				if(ciudades.get(i).getData() == ciudad1) { //me guardo la posicion de la ciudad 1 para arrancar desde ese punto. No dice nada de que se tenga que recorrer el grafo una vez.
 					pos1 = i;
 				}
 			}
@@ -109,14 +109,14 @@ public LinkedList<String> dfsExceptuado(Graph<String> grafo, int i, String ciuda
 	Vertex<String> v = grafo.getVertex(i); //me guardo el vertice
 	boolean puede = true;
 	 for(ind = 0; ind<exc.size();ind++) {
-		 if(v.getData() == exc.get(ind)) {
+		 if(v.getData() == exc.get(ind)) { //comparo la ciudad actual con las excepciones. 
 			 puede = false;
 		 }
 	 }
 	if(puede) { //si puede, osea que no esta en la lista de la excepciones
 		marca[i] = true; 
 		r.add(v.getData()); //guardo el valor en la lista
-		if(v.getData() != ciudad2) {
+		if(v.getData() != ciudad2) { //aca empezaria el dfs normal = al anterior. ---
 			List<Edge<String>> adyacentes = grafo.getEdges(v); // creo la lista de adyacentes
 			for (Edge<String> e: adyacentes){ //itero las adyacencias
 			 int j = e.getTarget().getPosition();
@@ -187,7 +187,7 @@ public LinkedList<String> dfsCorto(Graph<String> grafo, int i, String ciudad2) {
 			 r.remove(r.size()-1); //elimino el elemento visitado postRecursion.
 		 }
 	}
- } else {
+ } else { //aca sino deberia calcular el peso del recorrido que tengo guardado como rMin, ya que la var INT la pierdo por la recursion, seria una opcion pero nose si seria la correcta. 
 	 	if(peso<min) { //si el peso del camino actual es menor al minimo
 	 		min = peso;
 	 		System.out.println(min);
@@ -220,13 +220,15 @@ public List<String> caminoMasCorto(String ciudad1, String ciudad2){
 	return resultado;
  }
 
+// -4-
+
 
 public LinkedList<String> dfsSinCarga(Graph<String> grafo, int i, String ciudad2, int tanque) { //seguramente se puedan mejorar muchas cosas pero por el momento es lo que se me ocurrio.
 	 LinkedList<String> resultado = new LinkedList<String>();
 	 LinkedList<String> camino = new LinkedList<String>();
 	 boolean[] marca = new boolean[grafo.getSize()]; //creo el registro de marcas
 	 dfsSinCarga(i, grafo, marca,resultado,camino,ciudad2, tanque); //ingresa al dfs
-	 if(resultado.size() > 0 || resultado.get(resultado.size()-1) == ciudad2) {
+	 if(resultado.size() > 0 && resultado.get(resultado.size()-1) == ciudad2) {
 		 return resultado;
 	 }else {
 		 LinkedList<String> resultado2 = new LinkedList<String>(); //tambien le podria asignar valor NULL.
@@ -244,10 +246,12 @@ public LinkedList<String> dfsSinCarga(Graph<String> grafo, int i, String ciudad2
 		for (Edge<String> e: adyacentes){ //itero las adyacencias
 		 int j = e.getTarget().getPosition();
 		 if (!marca[j]) { //si no lo visite 
+			 if(r.size() == 0) { //este corte es para que no siga recorriendo si ya llego pero probablemente se pueda hacer mejor.
 				 tanque = tanque - e.getWeight();
 				 dfsSinCarga(j, grafo, marca,r,camino,ciudad2,tanque); //hago el dfs "interno"
 				 tanque = tanque + e.getWeight();
 				 camino.remove(camino.size()-1);
+			}
 		 }
 	}
  }
@@ -285,4 +289,82 @@ public LinkedList<String> dfsSinCarga(Graph<String> grafo, int i, String ciudad2
 		resultado = dfsSinCarga(ciudad,pos1,ciudad2,tanqueAuto);
 		return resultado;
  }
+} // <== este habria que borrarlo.
+	// -5-
+	/*
+	public LinkedList<String> dfsConMenorCarga(Graph<String> grafo, int i, String ciudad2, int tanque,int carga) { //seguramente se puedan mejorar muchas cosas pero por el momento es lo que se me ocurrio.
+		 LinkedList<String> resultado = new LinkedList<String>();
+		 LinkedList<String> camino = new LinkedList<String>();
+		 boolean[] marca = new boolean[grafo.getSize()]; //creo el registro de marcas
+		 dfsConMenorCarga(i, grafo, marca,resultado,camino,ciudad2, tanque,carga); //ingresa al dfs
+		 if(resultado.size() > 0 || resultado.get(resultado.size()-1) == ciudad2) {
+			 return resultado;
+		 }else {
+			 LinkedList<String> resultado2 = new LinkedList<String>(); //tambien le podria asignar valor NULL.
+			 return resultado2;
+		 }
+	}
+		private void dfsConMenorCarga(int i, Graph<String> grafo, boolean[] marca, List<String> r,List<String> camino, String ciudad2,int tanque,int carga) {
+		marca[i] = true;
+		Vertex<String> v = grafo.getVertex(i); //me guardo el vertice
+		System.out.println(v.getData());
+		camino.add(v.getData()); //guardo el valor en la lista
+		System.out.println(tanque);
+		if(v.getData() != ciudad2 && tanque > 0) {
+			List<Edge<String>> adyacentes = grafo.getEdges(v); // creo la lista de adyacentes
+			for (Edge<String> e: adyacentes){ //itero las adyacencias
+			 int j = e.getTarget().getPosition();
+			 if (!marca[j]) { //si no lo visite 
+				 if(r.size() > 0 && r.get(r.size()-1) != ciudad2) { //este corte es para que no siga recorriendo si ya llego pero probablemente se pueda hacer mejor.
+					 tanque = tanque - e.getWeight();
+					 dfsConMenorCarga(j, grafo, marca,r,camino,ciudad2,tanque,carga); //hago el dfs "interno"
+					 tanque = tanque + e.getWeight();
+					 camino.remove(camino.size()-1);
+				} else {
+					if(r.size() == 0) {
+						tanque = tanque - e.getWeight();
+						 dfsConMenorCarga(j, grafo, marca,r,camino,ciudad2,tanque,carga); //hago el dfs "interno"
+						 tanque = tanque + e.getWeight();
+						 camino.remove(camino.size()-1);
+					}
+				}
+			 }
+		}
+	 }
+	 else	{
+		 if(v.getData() == ciudad2) {
+			 marca[i] = false;
+		 }
+		 if(v.getData() == ciudad2 && tanque >= 0) {
+			 r.addAll(camino);
+			 marca[i] = true;
+		 }
+		 
+	 }
+	}
+
+
+		public List<String> caminoConMenorCargaDeCombustible(String ciudad1, String ciudad2, int tanqueAuto){
+			List<String> resultado = new LinkedList<String>();
+			List<Vertex<String>> ciudades = new LinkedList<Vertex<String>>();
+			ciudades = ciudad.getVertices();
+			int i;
+			int comprobacion = 0;
+			int pos1 = 0;
+			for(i = 0; i<ciudades.size();i++) {
+				if(ciudades.get(i).getData() == ciudad1 || ciudades.get(i).getData() == ciudad2) { //compruebo que esten las dos ciudades
+					comprobacion = comprobacion + 1;
+					if(ciudades.get(i).getData() == ciudad1) {
+						pos1 = i;
+					}
+				}
+			}
+			if(comprobacion < 2) {
+				return resultado;
+			}
+			int cargado = tanqueAuto;
+			resultado = dfsConMenorCarga(ciudad,pos1,ciudad2,tanqueAuto,cargado);
+			return resultado;
+	 }
 }
+	*/

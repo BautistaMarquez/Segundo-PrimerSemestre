@@ -48,7 +48,7 @@ public class Recorridos<T> {
 	}
 	
 	private void bfs(int i, Graph<T> grafo, boolean[] marca,List<T> r) {
-		 Queue<Vertex<T>> q = new LinkedList<Vertex<T>>(); //probe usando el AdjListVertex, e igualmente me sigue saltando el mismo error.
+		 Queue<Vertex<T>> q = new LinkedList<Vertex<T>>(); //probe usando el AdjListVertex, e igualmente me sigue saltando el mismo error.No me dejaba hacer el Queue normal nose porque.
 		 q.add(grafo.getVertex(i));//Vi esto de la LinkedList en StackOverFlow.
 		 marca[i] = true;
 		 while (!q.isEmpty()) {

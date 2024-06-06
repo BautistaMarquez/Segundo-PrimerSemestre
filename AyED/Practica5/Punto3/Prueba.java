@@ -25,7 +25,7 @@ public class Prueba {
 		mapaCiudades ciudades = new mapaCiudades(grafo);
 		// creo que deberia usar dos listas en todos los procedimientos.
 		r = ciudades.devolverCamino("LaPlata","San Juan");
-		
+		System.out.println("aaa");
 		System.out.println(r); //de esta forma imprime todo la LinkedList, no tenia idea. 
 		
 		// -2-
@@ -46,8 +46,11 @@ public class Prueba {
 		// -4-
 		
 		List<String> r4 = new LinkedList<String>();
-		r4 = ciudades.caminoSinCargarCombustible("BSAS","San Luis",150);//creo que esta quedo bastante bien, despues tendria que revisar los anteriores mejor.
+		r4 = ciudades.caminoSinCargarCombustible("BSAS","San Luis",50);
 		
-		System.out.println(r4); //Funciona. Seguramente se pueda hacer de otra manera, y la manera que yo utilice no es la mejor. Pero esta hecho.
+		System.out.println(r4); //Funciona. Tendria que ver los cortes de control esos que hago adentro del for pero anda.
+		// -5-
+		
+		//el tema con este es saber en que puedo le recargo nafta y como me guardo las veces que carge nafta, ya que me va a pasar lo mismo que con el minimo ya que lo voy a perden en la recursion ya que es un int osea compararia las veces que carge en el camino anterior con este pero no se como guardarlo.
 	}
 }
